@@ -1,4 +1,14 @@
-# def convertHex(number, type): 
+def convertHex(number): 
+    numberFound = False
+    i = 1 
+    countTotal = 0
+    countAmount = 0
+    while(numberFound == False): 
+        if(number > pow(i, countAmount)): 
+            countTotal+=1
+        else: 
+            
+
    
 
 def convertDec(number, type): 
@@ -73,30 +83,22 @@ while (num not in [1,2,3]):
     print("Please enter a valud number (1-3):")
     num = int(input("Enter (1-3): "))
 
+print(f"DEBUG: num={num}, original={original}, exit={exit}")
+
+#If the choices are the same, such as decimal to decial
 if(original == num): 
-    print("\nWell... your number is exactly the same... Its " + str(actualNum))
+    print("\nYour answer is identical: " + str(actualNum))
     exit = True
-elif((num == 3 and original == 1) and exit == False): 
+#You want to go from Binary to Decimal
+elif((original == 1 and num == 3) and exit == False): 
     print("\nYour number in decimal format is: " + str(convertDec(actualNum, 1)) + "-DEC")
-elif((num == 3 and original == 2) and exit == False): 
+#You want to go from Hexadecimal to Decimal
+elif((original == 2 and num == 3) and exit == False): 
     print("\nYour number in decimal format is: " + str(convertDec(actualNum, 2)) + "-DEC")
-elif((num == 1 and original == 2) and exit == False): 
-    dec = int(convertDec(actualNum, 2))
-    dec = int(dec)
-    countH = False
-    result = convertBin(dec)
-    print("\nYour number in binary is ", end="") 
-    zeroCount = 0
-    for i in range(0,17,1): 
-        if(result[i] != 1 and countH == False):
-            zeroCount+=1
-            continue
-        else: 
-            count = True
-        print(result[i], end="")
-    if(zeroCount == 17): 
-        print("0", end="")
-    print("-BIN")
+#You want to go from binary to hexadecimal
+elif((original == 1 and num == 2) and exit == False): 
+    dec = convertDec(actualNum, 1)
+    
 elif(num == 1 and  original == 3 and exit == False): 
     count = False
     result = convertBin(actualNum)
