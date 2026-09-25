@@ -142,29 +142,5 @@ else:
     if(zeroCount == 17): 
         print("0", end="")
     print("-BIN")
-print("\n", end="")
-for i in range(0,10,1):
+for i in range(0,20,1):
     print("-",end="")
-print()
-
-
-if original == 1:
-    print("Decimal: " + str(int(str(actualNum), 2)) + "-DEC")
-elif original == 3:
-    print("Decimal: " + str(actualNum) + "-DEC")
-else:
-    print("Decimal: " + str(int(actualNum, 16)) + "-DEC")
-
-if original == 1:
-    print("Hexadecimal: " + hex(int(str(actualNum), 2))[2:].upper() + "-HEX")
-elif original == 2:
-    print("Hexadecimal: " + str(actualNum) + "-HEX")
-else:
-    print("Hexadecimal: " + hex(actualNum)[2:].upper() + "-HEX")
-
-if original == 1:
-    print("Binary: " + str(actualNum) + "-BIN")
-elif original == 2:
-    print("Binary: " + bin(int(actualNum, 16))[2:] + "-BIN")
-else:
-    print("Binary: " + bin(actualNum)[2:] + "-BIN")
