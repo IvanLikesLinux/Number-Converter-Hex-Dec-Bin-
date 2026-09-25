@@ -1,14 +1,34 @@
-def convertHex(number): 
+def convertHex(number):
+    result = "" 
+    tempResult = 0
     numberFound = False
-    i = 1 
     countTotal = 0
-    countAmount = 0
     while(numberFound == False): 
-        if(number > pow(i, countAmount)): 
+        if(number > 15*pow(16, countTotal+1)): 
             countTotal+=1
         else: 
-            
-
+            numberFound = True
+    for i in range(countTotal, -1, -1):
+        temporary = 15
+        while(temporary * pow(16,i) > number ):
+            temporary-=1
+        tempResult =  temporary
+        number-=tempResult * pow(16,i)
+        if(tempResult == 10): 
+            result+="A"
+        elif(tempResult == 11): 
+            result+="B"
+        elif(tempResult == 12): 
+            result+="C"
+        elif(tempResult == 13): 
+            result+="D"
+        elif(tempResult == 14): 
+            result+="E"
+        elif(tempResult == 15): 
+            result+="F"
+        else: 
+            result+=str(tempResult)
+    return result 
    
 
 def convertDec(number, type): 
@@ -72,47 +92,53 @@ if (original == 1 or original == 3):
 else: 
     actualNum = input("Enter the actual number(R): ")
 
-
-print("\n\nNow print what number you *want* to have.")
-print("1. Binary (Supports only up to two bytes)")
-print("2. Hexadecimal")
-print("3. Decimal")
-num = int(input("Enter (1-3): "))
-while (num not in [1,2,3]): 
-    print("\nInvalid number!")
-    print("Please enter a valud number (1-3):")
-    num = int(input("Enter (1-3): "))
-
-print(f"DEBUG: num={num}, original={original}, exit={exit}")
-
-#If the choices are the same, such as decimal to decial
-if(original == num): 
-    print("\nYour answer is identical: " + str(actualNum))
-    exit = True
-#You want to go from Binary to Decimal
-elif((original == 1 and num == 3) and exit == False): 
-    print("\nYour number in decimal format is: " + str(convertDec(actualNum, 1)) + "-DEC")
-#You want to go from Hexadecimal to Decimal
-elif((original == 2 and num == 3) and exit == False): 
-    print("\nYour number in decimal format is: " + str(convertDec(actualNum, 2)) + "-DEC")
-#You want to go from binary to hexadecimal
-elif((original == 1 and num == 2) and exit == False): 
+print("\n", end="")
+for i in range(0,10,1):
+    print("-",end="")
+print("")
+if(original == 1): 
+    print("Decimal: " + str(convertDec(actualNum,1)) + "-DEC")
+elif (original == 3): 
+    print("Decimal: " + str(actualNum) + "-DEC")
+else: 
+    print("Decimal: " + str(convertDec(actualNum,2)) + "-DEC")
+if(original == 1): 
     dec = convertDec(actualNum, 1)
-    
-elif(num == 1 and  original == 3 and exit == False): 
-    count = False
-    result = convertBin(actualNum)
-    print("\nYour number in binary is ", end="") 
-    zeroCount = 0
-    for i in range(0,17,1): 
-        if(result[i] != 1 and count == False):
-            zeroCount+=1
-            continue
-        else: 
-            count = True
-        print(result[i], end="")
-    if(zeroCount == 17): 
-        print("0", end="")
-    print("-BIN")
-#elif(num == 2 and original == 3 and exit == False): 
-#ahh 
+    print("Hexadecimal: " + str(convertHex(dec)) + "-HEX")
+elif (original == 2): 
+    print("Hexadecimal: " + str(actualNum) + "-HEX")
+else: 
+    print("Hexadecimal: " + str(convertHex(actualNum)) + "-HEX")
+if(original == 1): 
+    print("Binary: " + str(actualNum) + "-BIN")
+elif (original == 2): 
+    dec = convertDec(actualNum,2)
+    print("Binary: " + str(convertBin(dec)) + "-BIN")
+else: 
+    print("Binary: " + str(convertBin(actualNum)) + "-BIN")
+print("\n", end="")
+for i in range(0,10,1):
+    print("-",end="")
+print()
+
+
+if original == 1:
+    print("Decimal: " + str(int(str(actualNum), 2)) + "-DEC")
+elif original == 3:
+    print("Decimal: " + str(actualNum) + "-DEC")
+else:
+    print("Decimal: " + str(int(actualNum, 16)) + "-DEC")
+
+if original == 1:
+    print("Hexadecimal: " + hex(int(str(actualNum), 2))[2:].upper() + "-HEX")
+elif original == 2:
+    print("Hexadecimal: " + str(actualNum) + "-HEX")
+else:
+    print("Hexadecimal: " + hex(actualNum)[2:].upper() + "-HEX")
+
+if original == 1:
+    print("Binary: " + str(actualNum) + "-BIN")
+elif original == 2:
+    print("Binary: " + bin(int(actualNum, 16))[2:] + "-BIN")
+else:
+    print("Binary: " + bin(actualNum)[2:] + "-BIN")
