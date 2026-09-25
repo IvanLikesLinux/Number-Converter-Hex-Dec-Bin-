@@ -4,7 +4,7 @@ def convertHex(number):
     numberFound = False
     countTotal = 0
     while(numberFound == False): 
-        if(number > 15*pow(16, countTotal+1)): 
+        if(number >= pow(16, countTotal+1)): 
             countTotal+=1
         else: 
             numberFound = True
@@ -93,7 +93,7 @@ else:
     actualNum = input("Enter the actual number(R): ")
 
 print("\n", end="")
-for i in range(0,10,1):
+for i in range(0,20,1):
     print("-",end="")
 print("")
 if(original == 1): 
