@@ -112,10 +112,36 @@ else:
 if(original == 1): 
     print("Binary: " + str(actualNum) + "-BIN")
 elif (original == 2): 
-    dec = convertDec(actualNum,2)
-    print("Binary: " + str(convertBin(dec)) + "-BIN")
+    dec = convertDec(actualNum, 2)
+    count = False
+    result = convertBin(dec)
+    print("Binary: ", end="") 
+    zeroCount = 0
+    for i in range(0,17,1): 
+        if(result[i] != 1 and count == False):
+            zeroCount+=1
+            continue
+        else: 
+            count = True
+        print(result[i], end="")
+    if(zeroCount == 17): 
+        print("0", end="")
+    print("-BIN")
 else: 
-    print("Binary: " + str(convertBin(actualNum)) + "-BIN")
+    count = False
+    result = convertBin(actualNum)
+    print("Binary: ", end="") 
+    zeroCount = 0
+    for i in range(0,17,1): 
+        if(result[i] != 1 and count == False):
+            zeroCount+=1
+            continue
+        else: 
+            count = True
+        print(result[i], end="")
+    if(zeroCount == 17): 
+        print("0", end="")
+    print("-BIN")
 print("\n", end="")
 for i in range(0,10,1):
     print("-",end="")
