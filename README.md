@@ -1,6 +1,6 @@
 # Purpose 
 
-I was writing a Operating System when I got really bored and annoyed of having to manually by hand calculate decimals, hexadecimals, and binary digits. I wrote this short Python script and ported it to my Ti-84 CE Python edition so that I could quickly convert numbers instead if having to do it by hand. 
+I was writing a Operating System when I got really bored and annoyed of having to manually by hand calculate decimals, hexadecimals, and binary digits. I wrote this short Python script and ported it to my Ti-84 Evo so that I could quickly convert numbers instead if having to do it by hand. 
 
 # Instructions
 
